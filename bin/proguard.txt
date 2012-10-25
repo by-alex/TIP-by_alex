@@ -1,0 +1,6 @@
+# view AndroidManifest.xml #generated:12
+-keep class com.by_alex.ti_a.mai { <init>(...); }
+
+# onClick res/layout/main.xml #generated:18
+-keepclassmembers class * { *** sendMessage(...); }
+
