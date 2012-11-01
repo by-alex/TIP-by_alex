@@ -4,7 +4,7 @@ package com.by_alex.ti_a;
 
 class config{
 
-	private static String SERVER_ADDRESS = "";
+	private static String SERVER_ADDRESS = "pacific-castle-7864.herokuapp.com";
 	private static String SAVE_LOCATION = "";
 
 

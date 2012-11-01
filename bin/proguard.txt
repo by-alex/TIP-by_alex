@@ -1,7 +1,10 @@
-# view AndroidManifest.xml #generated:19
+# view AndroidManifest.xml #generated:20
 -keep class com.by_alex.ti_a.act_1 { <init>(...); }
 
-# view AndroidManifest.xml #generated:12
+# view AndroidManifest.xml #generated:36
+-keep class com.by_alex.ti_a.act_2 { <init>(...); }
+
+# view AndroidManifest.xml #generated:13
 -keep class com.by_alex.ti_a.mai { <init>(...); }
 
 # onClick res/layout/main.xml #generated:18
