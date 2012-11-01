@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import android.app.AlertDialog;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import android.app.Activity;
@@ -23,21 +24,38 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.widget.TextView;
 import java.nio.charset.Charset;
+import java.io.IOException;
+import android.widget.Toast;
 
 public class act_2 extends Activity {    
 	
 	TextView textView;
+	static Context context;
 	
 	@Override   
 	public void onCreate(Bundle savedInstanceState) {         
 		super.onCreate(savedInstanceState);         
 		setContentView(R.layout.layout_a1);
+		Log.i("hhh","start");
+		context = this;
+		
 	} 
 	
+	
+	public static void toaster(String str){
+		Toast toast = Toast.makeText(context, str, 2000);
+		toast.show();
+	}
+	
+	public void setTextView(String str){
+		textView = (TextView) findViewById(R.id.textView);
+		textView.setText(str);
+	}
+	
 	@Override
-	public void onResume(){
-			super.onResume();
-			
+	public void onNewIntent(Intent intent){
+	
+		//toaster("NewIntent - "+intent.getExtras().toString());
 			NdefMessage msgs[];
 			if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())){
 					Parcelable[] rawMsgs = getIntent().getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
@@ -45,21 +63,36 @@ public class act_2 extends Activity {
 						msgs = new NdefMessage[rawMsgs.length];
 						for(int i = 0; i < rawMsgs.length; i++)
 							msgs[i] = (NdefMessage)rawMsgs[i];
-						String str = "from uri - ";
-						for(int i = 0; i < msgs.length; i++)
-							str += msgs[i]+"|/|";
-						str += "|&|";
-						for(int i = 0; i < msgs.length; i++)
-							str += msgs[i].getRecords()[0].getPayload().toString()+"|/|";	
-				
-					Tag tag = getIntent().getParcelableExtra(NfcAdapter.EXTRA_TAG);
-						str += tag.toString();
+						String str = "";
+						//for(int i = 0; i < msgs.length; i++)
+						//	str += msgs.length+"_"+msgs[i]
 						
-						textView = (TextView) findViewById(R.id.textView);
-						textView.setText(str);
+						//
+						
+						for(int i = 0; i < msgs.length; i++){
+							for(int i2 = 0; i2 < msgs[i].getRecords().length; i2++){
+								//byte[] value = msgs[i].getRecords()[i2].getPayload();
+								str += new String(msgs[i].getRecords()[i2].getPayload());
+							}
+						}
+				
+						//Tag tag = getIntent().getParcelableExtra(NfcAdapter.EXTRA_TAG);
+						//str += tag.toString();
+						str.trim();
+						str = str.substring(7);
+						toaster("TAG = [ "+str+" ]");
+						request_manager.MakeRequest(str,config.ACTIVITY_TWO);
 					}
 					
 			}
+			
+	}
+	
+	@Override
+	public void onResume(){
+			super.onResume();
+			
+			
 	}
 	
 }

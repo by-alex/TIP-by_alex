@@ -7,6 +7,8 @@ class config{
 	private static String SERVER_ADDRESS = "pacific-castle-7864.herokuapp.com";
 	private static String SAVE_LOCATION = "";
 
+	public static final int ACTIVITY_ONE = 1;
+	public static final int ACTIVITY_TWO = 2;
 
 	public static void init(String server_address, String save_location){
 		SERVER_ADDRESS = server_address;

@@ -16,8 +16,10 @@ class request_manager{
 	
 	public request_manager(){}
 	
+	private static int from_to = 0;
 	
-	public static void MakeRequest(String data){
+	public static void MakeRequest(String data, int from){
+		from_to = from;
 		Log.i("hhh","request_manager_start");
 		new make_request().execute(data);
 		Log.i("hhh","request_manager_end");
@@ -35,7 +37,14 @@ class request_manager{
      }
 
      protected void onPostExecute(String result) {
-         act_1.toaster(result);
+		switch(from_to){
+			case config.ACTIVITY_ONE:{
+				act_1.toaster(result);
+				break;}
+			case config.ACTIVITY_TWO:{
+				act_2.toaster(result);
+				break;}
+		}
      }
      
     public String prep(String object) throws Exception{

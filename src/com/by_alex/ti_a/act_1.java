@@ -81,7 +81,7 @@ public class act_1 extends Activity {
 						str.trim();
 						str = str.substring(3);
 						toaster("TAG = [ "+str+" ]");
-						request_manager.MakeRequest(str);
+						request_manager.MakeRequest(str,config.ACTIVITY_ONE);
 					}
 					
 			}
