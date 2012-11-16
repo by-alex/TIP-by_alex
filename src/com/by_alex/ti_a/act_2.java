@@ -1,6 +1,6 @@
 package com.by_alex.ti_a;
 
-
+import java.io.File;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
@@ -54,7 +54,7 @@ public class act_2 extends Activity {
 	
 	@Override
 	public void onNewIntent(Intent intent){
-	
+	context = this;
 		//toaster("NewIntent - "+intent.getExtras().toString());
 			NdefMessage msgs[];
 			if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())){
@@ -80,7 +80,10 @@ public class act_2 extends Activity {
 						//str += tag.toString();
 						str.trim();
 						str = str.substring(7);
-						toaster("TAG = [ "+str+" ]");
+						Log.i("HHH","TAG = [ "+str+" ]");
+						toaster("TAG = [ "+str+" ] "+getExternalFilesDir(null).toString());
+						io_manager.createFolder(this, "/objects");
+						io_manager.writeFile(this, "/objects", "HHH");
 						request_manager.MakeRequest(str,config.ACTIVITY_TWO);
 					}
 					

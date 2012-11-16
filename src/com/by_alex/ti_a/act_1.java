@@ -54,7 +54,7 @@ public class act_1 extends Activity {
 	
 	@Override
 	public void onNewIntent(Intent intent){
-	
+	context = this;
 		//toaster("NewIntent - "+intent.getExtras().toString());
 			NdefMessage msgs[];
 			if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())){
@@ -80,7 +80,7 @@ public class act_1 extends Activity {
 						//str += tag.toString();
 						str.trim();
 						str = str.substring(3);
-						toaster("TAG = [ "+str+" ]");
+						toaster("SCHEMA TAG = [ "+str+" ] "+io_manager.getExternalStorageState());
 						request_manager.MakeRequest(str,config.ACTIVITY_ONE);
 					}
 					

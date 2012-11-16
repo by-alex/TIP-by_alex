@@ -1,11 +1,14 @@
-# view AndroidManifest.xml #generated:20
+# view AndroidManifest.xml #generated:24
 -keep class com.by_alex.ti_a.act_1 { <init>(...); }
 
-# view AndroidManifest.xml #generated:36
+# view AndroidManifest.xml #generated:40
 -keep class com.by_alex.ti_a.act_2 { <init>(...); }
 
-# view AndroidManifest.xml #generated:13
+# view AndroidManifest.xml #generated:17
 -keep class com.by_alex.ti_a.mai { <init>(...); }
+
+# view AndroidManifest.xml #generated:50
+-keep class com.by_alex.ti_a.nfc_receiver { <init>(...); }
 
 # onClick res/layout/main.xml #generated:18
 -keepclassmembers class * { *** sendMessage(...); }
