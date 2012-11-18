@@ -17,4 +17,5 @@
 /home/alex/Documents/TI_Project/bin/classes/com/by_alex/ti_a/act_1.class \
 /home/alex/Documents/TI_Project/bin/classes/com/by_alex/ti_a/R.class \
 /home/alex/Documents/TI_Project/bin/classes/com/by_alex/ti_a/act_2.class \
+/home/alex/Documents/TI_Project/bin/classes/com/by_alex/ti_a/sqlLiteHelper.class \
 /home/alex/android-sdk-linux/tools/support/annotations.jar \

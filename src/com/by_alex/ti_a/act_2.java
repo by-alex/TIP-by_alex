@@ -32,13 +32,15 @@ public class act_2 extends Activity {
 	TextView textView;
 	static Context context;
 	
+	sqlLiteHelper db; //=new sqlLiteHelper(this);
+	
 	@Override   
 	public void onCreate(Bundle savedInstanceState) {         
 		super.onCreate(savedInstanceState);         
 		setContentView(R.layout.layout_a1);
 		Log.i("hhh","start");
 		context = this;
-		
+		 db = new sqlLiteHelper(this);
 	} 
 	
 	
@@ -81,9 +83,14 @@ public class act_2 extends Activity {
 						str.trim();
 						str = str.substring(7);
 						Log.i("HHH","TAG = [ "+str+" ]");
-						toaster("TAG = [ "+str+" ] "+getExternalFilesDir(null).toString());
-						io_manager.createFolder(this, "/objects");
+						try{
+							toaster("TAG = [ "+str+" ] "+getExternalFilesDir(null).toString()+" "+io_manager.fileExists(this, "/objects", "HHH"));
+						}catch(Exception e){
+								toaster("TAG = "+ e.toString());
+						}
+						//io_manager.createFolder(this, "/objects");
 						io_manager.writeFile(this, "/objects", "HHH");
+						
 						request_manager.MakeRequest(str,config.ACTIVITY_TWO);
 					}
 					

@@ -80,7 +80,7 @@ public class act_1 extends Activity {
 						//str += tag.toString();
 						str.trim();
 						str = str.substring(3);
-						toaster("SCHEMA TAG = [ "+str+" ] "+io_manager.getExternalStorageState());
+						toaster("TEXT/PLAIN TAG = [ "+str+" ] "+io_manager.getExternalStorageState());
 						request_manager.MakeRequest(str,config.ACTIVITY_ONE);
 					}
 					

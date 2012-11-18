@@ -35,8 +35,8 @@ public class io_manager{
 		 return context.getExternalFilesDir(null).toString();
 	}
 		
-	public static void createFolder(Context context, String relative_path){
-		File dir = new File(context.getExternalFilesDir(null).getAbsolutePath() + relative_path);
+	public static void createFolder(Context context, String path){
+		File dir = new File(context.getExternalFilesDir(null).getAbsolutePath() + path);
 		dir.mkdirs();
 	}
 
@@ -55,5 +55,30 @@ public class io_manager{
 			Log.i("HHH", e.toString());
 		}
 	}
+	
+	public static boolean fileExists(Context context, String path, String file){
+		File dir = new File(context.getExternalFilesDir(null).getAbsolutePath() + path);
+		dir.mkdirs();
+		File fileN = new File(dir, file);
+		return fileN.exists();
+	}
+
+	public static void readFile(Context context, String path, String file){
+		
+		File dir = new File(context.getExternalFilesDir(null).getAbsolutePath() + path);
+		dir.mkdirs();
+		
+		File fileN = new File(dir, file);
+		try {
+			FileOutputStream fos = new FileOutputStream(fileN);
+			fos.write("HHHHHHHHHHHHHHHH".getBytes());
+			fos.close();
+ 
+		}catch (Exception e) {
+			Log.i("HHH", e.toString());
+		}
+	}
+	
+	
 
 }
